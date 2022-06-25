@@ -69,7 +69,10 @@ class Cell:
             self.button = ttk.Button(self.frame, textvariable=self.var, command=self.button_data)
             self.button.grid(column=0, row=0, sticky=(N, W, S, E), padx=PAD, pady=PAD)
             self.frame.columnconfigure(0, weight=1)
-            self.data_style()
+            index = 0
+            if value in self.raci.roles:
+                index = self.raci.roles.index(value)
+            self.data_style(index)
             self.raci.saved = False
             #self.raci.window.update()
             #print(self.frame.grid_bbox())
@@ -133,17 +136,21 @@ class Cell:
         self.raci.saved = False
 
     def button_data(self):
+        print(f'Cell.button_data()')
         value = self.var.get()
-        if value == "0":
-            value = "1"
-        elif value == "1":
-            value = "2"
-        elif value == "2":
-            value = "3"
-        else:
-            value = "0"
+        print(f'    value={value}')
+        index = 0
+        print(f'    index={index}')
+        if value in self.raci.roles:
+            index = self.raci.roles.index(value)
+            print(f'    index={index}')
+            index += 1
+            if index >= len(self.raci.roles):
+                index = 0
+        value = self.raci.roles[index]
+        print(f'    value={value}, index={index}')
         self.var.set(value)
-        self.data_style()
+        self.data_style(index)
 
     def button_row_del(self):
         # print(f'button_row_del  ({self.row}, {self.col})')
@@ -173,16 +180,10 @@ class Cell:
         if self.col < self.raci.cols - 1:
             self.raci.col_swap(self.col, self.col+1)
 
-    def data_style(self):
-        value = self.var.get()
-        if value == "3":
-            self.button.configure(bootstyle="success")
-        elif value == "2":
-            self.button.configure(bootstyle="warning")
-        elif value == "1":
-            self.button.configure(bootstyle="danger")
-        else:
-            self.button.configure(bootstyle="secondary")
+    def data_style(self, index):
+        if index >= len(self.raci.styles):
+            index = 0
+        self.button.configure(bootstyle=self.raci.styles[index])
 
     def grid(self):
         self.frame.grid(column=self.col, row=self.row, sticky=(W, S, E))

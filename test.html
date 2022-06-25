@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>TITLE</title>
+    <meta name="description" content="TITLE" />
+    <meta name="generator"   content="RACI v0.0.1" />
+    <link rel="help"         href="https://github.com/marjohloo/RACI" />
+    <link rel="author"       href="https://github.com/marjohloo" />
+    <link rel="license"      href="https://www.gnu.org/licenses/gpl-3.0.html" />
+    <style>
+        body              { font-size: 10pt; font-family: Calibri,Arial,Helvetica,sans-serif; }
+        div               { page-break-inside: avoid; }
+        p                 { font-size: 10pt; }
+        h1                { font-size: 16pt; font-weight: bold; }
+        h2                { font-size: 12pt; font-weight: bold; /* page-break-before: always; */ }
+        table, tr, th, td { font-size: 10pt; text-align: center; vertical-align: top; border: 1px solid black; border-collapse: collapse; padding: 2pt}
+        .page             { page-break-before: always; }
+        .left             { text-align: left; }
+        .primary          { background: #4582ec; }
+        .secondary        { background: #adb5bd; }
+        .success          { background: #02b875; }
+        .warning          { background: #f0ad4e; }
+        .primary          { background: #4582ec; }
+        .danger           { background: #d9534f; }
+        .info             { background: #17a2b8; }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>TITLE</h1>
+      <table id="RACI" width="100%">
+        <tr>
+          <th></th>
+          <th width="20%">COL 3</th>
+          <th width="20%">COL 1</th>
+          <th width="20%">COL 2</th>
+        </tr>
+        <tr>
+          <td class="left">ROW 1</td>
+          <td class="secondary"></td>
+          <td class="danger">Responsible</td>
+          <td class="secondary"></td>
+        </tr>
+        <tr>
+          <td class="left">ROW 3</td>
+          <td class="secondary"></td>
+          <td class="secondary"></td>
+          <td class="secondary"></td>
+        </tr>
+        <tr>
+          <td class="left">ROW 2</td>
+          <td class="success">Informed</td>
+          <td class="warning">Accountable</td>
+          <td class="info">Consulted</td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

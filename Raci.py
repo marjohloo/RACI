@@ -51,6 +51,8 @@ class Raci:
         # Initialise data
         self.title = "RACI"
         self.version = "v0.0.1"
+        self.roles  = [""         , "Responsible", "Accountable", "Consulted", "Informed"]
+        self.styles = ["secondary", "danger"     , "warning"    , "info"     , "success" ]
         self.cells = {}
         self.rows = 0
         self.cols = 0
@@ -299,14 +301,13 @@ class Raci:
             pass
         elif col == 0:
             cell_html += ' class="left"'
-        elif cell_value == "3":
-            cell_html += ' class="success"'
-        elif cell_value == "2":
-            cell_html += ' class="warning"'
-        elif cell_value == "1":
-            cell_html += ' class="danger"'
         else:
-            cell_html += ' class="secondary"'
+            cell_class = "secondary"
+            if cell_value in self.roles:
+                index = self.roles.index(cell_value)
+                if index < len(self.styles):
+                    cell_class = self.styles[index]
+            cell_html += f' class="{cell_class}"'
         if col > 0 and row == row_width:
             cell_html += f' width="{int(100/(self.cols+1))}%"'
         cell_html += f'>{cell_value}<'
@@ -368,20 +369,21 @@ class Raci:
                 f.write('      </table>\n')
                 f.write('    </div>\n')
                 # Output individual data
-                for col in range(1, self.cols):
-                    if col == 1:
-                        f.write('    <div class="page">\n')
-                    else:
-                        f.write('    <div>\n')
-                    f.write(f'      <h2>{self.cell_value(0,0)}: {self.cell_value(0, col)}</h2>\n')
-                    f.write( '      <table width="100%">\n')
-                    for row in range(1, self.rows):
-                        f.write( '        <tr>\n')
-                        f.write(f'          {self.cell_html(row, 0,   1)}\n')
-                        f.write(f'          {self.cell_html(row, col, 1)}\n')
-                        f.write( '        </tr>\n')
-                    f.write( '      </table>\n')
-                    f.write('    </div>\n')
+                if False:
+                    for col in range(1, self.cols):
+                        if col == 1:
+                            f.write('    <div class="page">\n')
+                        else:
+                            f.write('    <div>\n')
+                        f.write(f'      <h2>{self.cell_value(0,0)}: {self.cell_value(0, col)}</h2>\n')
+                        f.write( '      <table width="100%">\n')
+                        for row in range(1, self.rows):
+                            f.write( '        <tr>\n')
+                            f.write(f'          {self.cell_html(row, 0,   1)}\n')
+                            f.write(f'          {self.cell_html(row, col, 1)}\n')
+                            f.write( '        </tr>\n')
+                        f.write( '      </table>\n')
+                        f.write('    </div>\n')
                 # End file
                 f.write('  </body>\n')
                 f.write('</html>\n')
@@ -396,8 +398,8 @@ class Raci:
             # Open file
             with xlsxwriter.Workbook(filename) as w:
                 # Get widths from biggest row/column titles
-                width_row = 10
-                width_col = 10
+                width_row = 12
+                width_col = 12
                 for row in range(self.rows):
                     if len(self.cell_value(row, 0)) > width_row:
                         width_row = len(self.cell_value(row, 0))
@@ -407,12 +409,15 @@ class Raci:
                 # Set formats
                 format_normal    = w.add_format()
                 format_bold      = w.add_format({"bold" : 1})
-                format_primary   = w.add_format({"bg_color" : self.colors.get("primary")})
-                format_secondary = w.add_format({"bg_color" : self.colors.get("secondary")})
-                format_success   = w.add_format({"bg_color" : self.colors.get("success")})
-                format_warning   = w.add_format({"bg_color" : self.colors.get("warning")})
-                format_danger    = w.add_format({"bg_color" : self.colors.get("danger")})
-                format_info      = w.add_format({"bg_color" : self.colors.get("info")})
+                #format_primary   = w.add_format({"bg_color" : self.colors.get("primary")})
+                #format_secondary = w.add_format({"bg_color" : self.colors.get("secondary")})
+                #format_success   = w.add_format({"bg_color" : self.colors.get("success")})
+                #format_warning   = w.add_format({"bg_color" : self.colors.get("warning")})
+                #format_danger    = w.add_format({"bg_color" : self.colors.get("danger")})
+                #format_info      = w.add_format({"bg_color" : self.colors.get("info")})
+                format_data      = []
+                for style in self.styles:
+                    format_data.append(w.add_format({"bg_color" : self.colors.get(style)}))
                 # Create worksheet
                 worksheet = w.add_worksheet(self.cell_value(0,0))
                 # Loop through cells
@@ -420,63 +425,19 @@ class Raci:
                     for col in range(self.cols):
                         # Set cell data
                         if row > 0 and col > 0:
-                            worksheet.write(row, col, int(self.cell_value(row, col)))
+                            worksheet.write(row, col, self.cell_value(row, col))
                         else:
                             worksheet.write(row, col, self.cell_value(row, col), format_bold)
                 # Set column widths
                 worksheet.set_column(0, 0,           width_row)
                 worksheet.set_column(1, self.cols-1, width_col)
-                # Set conditional formatting
-                worksheet.conditional_format(1, 1, self.rows-1, self.cols-1, {"type"     : "cell",
-                                                                              "criteria" : "==",
-                                                                              "value"    : 3,
-                                                                              "format"   : format_success})
-                worksheet.conditional_format(1, 1, self.rows-1, self.cols-1, {"type"     : "cell",
-                                                                              "criteria" : "==",
-                                                                              "value"    : 2,
-                                                                              "format"   : format_warning})
-                worksheet.conditional_format(1, 1, self.rows-1, self.cols-1, {"type"     : "cell",
-                                                                              "criteria" : "==",
-                                                                              "value"    : 1,
-                                                                              "format"   : format_danger})
-                worksheet.conditional_format(1, 1, self.rows-1, self.cols-1, {"type"     : "cell",
-                                                                              "criteria" : "==",
-                                                                              "value"    : 0,
-                                                                              "format"   : format_secondary})
-                # Output individual data
-                for col in range(1, self.cols):
-                    # Create worksheet
-                    worksheet = w.add_worksheet(self.cell_value(0,col))
-                    for row in range(self.rows):
-                        # Build reference to row title in main worksheet
-                        xl_cell_ref = f"='{self.cell_value(0, 0)}'!{xl_rowcol_to_cell(row, 0)}"
-                        worksheet.write(row, 0, xl_cell_ref, format_bold)
-                        # Build reference to data in main worksheet
-                        xl_cell_ref = f"='{self.cell_value(0, 0)}'!{xl_rowcol_to_cell(row, col)}"
-                        if row > 0:
-                            worksheet.write(row, 1, xl_cell_ref)
-                        else:
-                            worksheet.write(row, 1, xl_cell_ref, format_bold)
-                        # Set column widths
-                        worksheet.set_column(0, 0, width_row)
-                        worksheet.set_column(1, 1, width_col)
-                        # Set conditional formatting
-                        worksheet.conditional_format(1, 1, self.rows-1, 1, {"type"     : "cell",
-                                                                            "criteria" : "==",
-                                                                            "value"    : 3,
-                                                                            "format"   : format_success})
-                        worksheet.conditional_format(1, 1, self.rows-1, 1, {"type"     : "cell",
-                                                                            "criteria" : "==",
-                                                                            "value"    : 2,
-                                                                            "format"   : format_warning})
-                        worksheet.conditional_format(1, 1, self.rows-1, 1, {"type"     : "cell",
-                                                                            "criteria" : "==",
-                                                                            "value"    : 1,
-                                                                            "format"   : format_danger})
-                        worksheet.conditional_format(1, 1, self.rows-1, 1, {"type"     : "cell",
-                                                                            "criteria" : "==",
-                                                                            "value"    : 0,
-                                                                            "format"   : format_secondary})
+                for index in range(len(self.roles)):
+                    if index < len(format_data):
+                        role_quotes = f'"{self.roles[index]}"'
+                        worksheet.conditional_format(1, 1, self.rows-1, self.cols-1, {"type"     : "cell",
+                                                                                      "criteria" : "==",
+                                                                                      "value"    : role_quotes,
+                                                                                      "format"   : format_data[index]})
 
     def filename_set(self, filename):
         # Retain filename
@@ -509,7 +470,7 @@ class Raci:
                 if col == 0:
                     self.cells[cell_key] = Cell(self, self.window, row, col, "row", f'ROW {row}')
                 else:
-                    self.cells[cell_key] = Cell(self, self.window, row, col, "data", "0")
+                    self.cells[cell_key] = Cell(self, self.window, row, col, "data", "")
         self.rows += 1
         cell_key = Cell.key(self.rows-1, 0)
         if cell_key in self.cells:
@@ -527,7 +488,7 @@ class Raci:
                 if row == 0:
                     self.cells[cell_key] = Cell(self, self.window, row, col, "col", f'COL {col}')
                 else:
-                    self.cells[cell_key] = Cell(self, self.window, row, col, "data", "0")
+                    self.cells[cell_key] = Cell(self, self.window, row, col, "data", "")
         self.cols += 1
         cell_key = Cell.key(0, self.cols-1)
         if cell_key in self.cells:
