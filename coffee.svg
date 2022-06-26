@@ -1,0 +1,127 @@
+<svg version="1.1" width="466" height="112" xmlns="http://www.w3.org/2000/svg">
+  <g id="TABLE" font-size="14" font-family="Arial, Helvetica, sans-serif" fill="#000000" text-anchor="middle" dominant-baseline="middle">
+    <g id="RECT_0_0" stroke="#ffffffff" stroke-width="2">
+      <rect x="1" y="1" width="104" height="22" fill="#F8F9FA" />
+    </g>    <g id="TEXT_0_0">
+      <text x="4" y="13.0" text-anchor="start" font-weight="bold">Serve a coffee</text>
+    </g>  </g>  <g id="TABLE" font-size="14" font-family="Arial, Helvetica, sans-serif" fill="#000000" text-anchor="middle" dominant-baseline="middle">
+    <g id="RECT_0_1" stroke="#ffffffff" stroke-width="2">
+      <rect x="105" y="1" width="90" height="22" fill="#F8F9FA" />
+    </g>    <g id="TEXT_0_1">
+      <text x="150.0" y="13.0" text-anchor="middle" font-weight="normal">Manager</text>
+    </g>  </g>  <g id="TABLE" font-size="14" font-family="Arial, Helvetica, sans-serif" fill="#000000" text-anchor="middle" dominant-baseline="middle">
+    <g id="RECT_0_2" stroke="#ffffffff" stroke-width="2">
+      <rect x="195" y="1" width="90" height="22" fill="#F8F9FA" />
+    </g>    <g id="TEXT_0_2">
+      <text x="240.0" y="13.0" text-anchor="middle" font-weight="normal">Server</text>
+    </g>  </g>  <g id="TABLE" font-size="14" font-family="Arial, Helvetica, sans-serif" fill="#000000" text-anchor="middle" dominant-baseline="middle">
+    <g id="RECT_0_3" stroke="#ffffffff" stroke-width="2">
+      <rect x="285" y="1" width="90" height="22" fill="#F8F9FA" />
+    </g>    <g id="TEXT_0_3">
+      <text x="330.0" y="13.0" text-anchor="middle" font-weight="normal">Barrista</text>
+    </g>  </g>  <g id="TABLE" font-size="14" font-family="Arial, Helvetica, sans-serif" fill="#000000" text-anchor="middle" dominant-baseline="middle">
+    <g id="RECT_0_4" stroke="#ffffffff" stroke-width="2">
+      <rect x="375" y="1" width="90" height="22" fill="#F8F9FA" />
+    </g>    <g id="TEXT_0_4">
+      <text x="420.0" y="13.0" text-anchor="middle" font-weight="normal">Customer</text>
+    </g>  </g>  <g id="TABLE" font-size="14" font-family="Arial, Helvetica, sans-serif" fill="#000000" text-anchor="middle" dominant-baseline="middle">
+    <g id="RECT_1_0" stroke="#ffffffff" stroke-width="2">
+      <rect x="1" y="23" width="104" height="22" fill="#F8F9FA" />
+    </g>    <g id="TEXT_1_0">
+      <text x="4" y="35.0" text-anchor="start" font-weight="normal">Take order</text>
+    </g>  </g>  <g id="TABLE" font-size="14" font-family="Arial, Helvetica, sans-serif" fill="#000000" text-anchor="middle" dominant-baseline="middle">
+    <g id="RECT_1_1" stroke="#ffffffff" stroke-width="2">
+      <rect x="105" y="23" width="90" height="22" fill="#d9534f" />
+    </g>    <g id="TEXT_1_1">
+      <text x="150.0" y="35.0" text-anchor="middle" font-weight="normal">Responsible</text>
+    </g>  </g>  <g id="TABLE" font-size="14" font-family="Arial, Helvetica, sans-serif" fill="#000000" text-anchor="middle" dominant-baseline="middle">
+    <g id="RECT_1_2" stroke="#ffffffff" stroke-width="2">
+      <rect x="195" y="23" width="90" height="22" fill="#f0ad4e" />
+    </g>    <g id="TEXT_1_2">
+      <text x="240.0" y="35.0" text-anchor="middle" font-weight="normal">Accountable</text>
+    </g>  </g>  <g id="TABLE" font-size="14" font-family="Arial, Helvetica, sans-serif" fill="#000000" text-anchor="middle" dominant-baseline="middle">
+    <g id="RECT_1_3" stroke="#ffffffff" stroke-width="2">
+      <rect x="285" y="23" width="90" height="22" fill="#02b875" />
+    </g>    <g id="TEXT_1_3">
+      <text x="330.0" y="35.0" text-anchor="middle" font-weight="normal">Informed</text>
+    </g>  </g>  <g id="TABLE" font-size="14" font-family="Arial, Helvetica, sans-serif" fill="#000000" text-anchor="middle" dominant-baseline="middle">
+    <g id="RECT_1_4" stroke="#ffffffff" stroke-width="2">
+      <rect x="375" y="23" width="90" height="22" fill="#17a2b8" />
+    </g>    <g id="TEXT_1_4">
+      <text x="420.0" y="35.0" text-anchor="middle" font-weight="normal">Consulted</text>
+    </g>  </g>  <g id="TABLE" font-size="14" font-family="Arial, Helvetica, sans-serif" fill="#000000" text-anchor="middle" dominant-baseline="middle">
+    <g id="RECT_2_0" stroke="#ffffffff" stroke-width="2">
+      <rect x="1" y="45" width="104" height="22" fill="#F8F9FA" />
+    </g>    <g id="TEXT_2_0">
+      <text x="4" y="57.0" text-anchor="start" font-weight="normal">Take payment</text>
+    </g>  </g>  <g id="TABLE" font-size="14" font-family="Arial, Helvetica, sans-serif" fill="#000000" text-anchor="middle" dominant-baseline="middle">
+    <g id="RECT_2_1" stroke="#ffffffff" stroke-width="2">
+      <rect x="105" y="45" width="90" height="22" fill="#d9534f" />
+    </g>    <g id="TEXT_2_1">
+      <text x="150.0" y="57.0" text-anchor="middle" font-weight="normal">Responsible</text>
+    </g>  </g>  <g id="TABLE" font-size="14" font-family="Arial, Helvetica, sans-serif" fill="#000000" text-anchor="middle" dominant-baseline="middle">
+    <g id="RECT_2_2" stroke="#ffffffff" stroke-width="2">
+      <rect x="195" y="45" width="90" height="22" fill="#f0ad4e" />
+    </g>    <g id="TEXT_2_2">
+      <text x="240.0" y="57.0" text-anchor="middle" font-weight="normal">Accountable</text>
+    </g>  </g>  <g id="TABLE" font-size="14" font-family="Arial, Helvetica, sans-serif" fill="#000000" text-anchor="middle" dominant-baseline="middle">
+    <g id="RECT_2_3" stroke="#ffffffff" stroke-width="2">
+      <rect x="285" y="45" width="90" height="22" fill="#adb5bd" />
+    </g>    <g id="TEXT_2_3">
+      <text x="330.0" y="57.0" text-anchor="middle" font-weight="normal"></text>
+    </g>  </g>  <g id="TABLE" font-size="14" font-family="Arial, Helvetica, sans-serif" fill="#000000" text-anchor="middle" dominant-baseline="middle">
+    <g id="RECT_2_4" stroke="#ffffffff" stroke-width="2">
+      <rect x="375" y="45" width="90" height="22" fill="#17a2b8" />
+    </g>    <g id="TEXT_2_4">
+      <text x="420.0" y="57.0" text-anchor="middle" font-weight="normal">Consulted</text>
+    </g>  </g>  <g id="TABLE" font-size="14" font-family="Arial, Helvetica, sans-serif" fill="#000000" text-anchor="middle" dominant-baseline="middle">
+    <g id="RECT_3_0" stroke="#ffffffff" stroke-width="2">
+      <rect x="1" y="67" width="104" height="22" fill="#F8F9FA" />
+    </g>    <g id="TEXT_3_0">
+      <text x="4" y="79.0" text-anchor="start" font-weight="normal">Prepare order</text>
+    </g>  </g>  <g id="TABLE" font-size="14" font-family="Arial, Helvetica, sans-serif" fill="#000000" text-anchor="middle" dominant-baseline="middle">
+    <g id="RECT_3_1" stroke="#ffffffff" stroke-width="2">
+      <rect x="105" y="67" width="90" height="22" fill="#d9534f" />
+    </g>    <g id="TEXT_3_1">
+      <text x="150.0" y="79.0" text-anchor="middle" font-weight="normal">Responsible</text>
+    </g>  </g>  <g id="TABLE" font-size="14" font-family="Arial, Helvetica, sans-serif" fill="#000000" text-anchor="middle" dominant-baseline="middle">
+    <g id="RECT_3_2" stroke="#ffffffff" stroke-width="2">
+      <rect x="195" y="67" width="90" height="22" fill="#17a2b8" />
+    </g>    <g id="TEXT_3_2">
+      <text x="240.0" y="79.0" text-anchor="middle" font-weight="normal">Consulted</text>
+    </g>  </g>  <g id="TABLE" font-size="14" font-family="Arial, Helvetica, sans-serif" fill="#000000" text-anchor="middle" dominant-baseline="middle">
+    <g id="RECT_3_3" stroke="#ffffffff" stroke-width="2">
+      <rect x="285" y="67" width="90" height="22" fill="#f0ad4e" />
+    </g>    <g id="TEXT_3_3">
+      <text x="330.0" y="79.0" text-anchor="middle" font-weight="normal">Accountable</text>
+    </g>  </g>  <g id="TABLE" font-size="14" font-family="Arial, Helvetica, sans-serif" fill="#000000" text-anchor="middle" dominant-baseline="middle">
+    <g id="RECT_3_4" stroke="#ffffffff" stroke-width="2">
+      <rect x="375" y="67" width="90" height="22" fill="#02b875" />
+    </g>    <g id="TEXT_3_4">
+      <text x="420.0" y="79.0" text-anchor="middle" font-weight="normal">Informed</text>
+    </g>  </g>  <g id="TABLE" font-size="14" font-family="Arial, Helvetica, sans-serif" fill="#000000" text-anchor="middle" dominant-baseline="middle">
+    <g id="RECT_4_0" stroke="#ffffffff" stroke-width="2">
+      <rect x="1" y="89" width="104" height="22" fill="#F8F9FA" />
+    </g>    <g id="TEXT_4_0">
+      <text x="4" y="101.0" text-anchor="start" font-weight="normal">Serve customer</text>
+    </g>  </g>  <g id="TABLE" font-size="14" font-family="Arial, Helvetica, sans-serif" fill="#000000" text-anchor="middle" dominant-baseline="middle">
+    <g id="RECT_4_1" stroke="#ffffffff" stroke-width="2">
+      <rect x="105" y="89" width="90" height="22" fill="#d9534f" />
+    </g>    <g id="TEXT_4_1">
+      <text x="150.0" y="101.0" text-anchor="middle" font-weight="normal">Responsible</text>
+    </g>  </g>  <g id="TABLE" font-size="14" font-family="Arial, Helvetica, sans-serif" fill="#000000" text-anchor="middle" dominant-baseline="middle">
+    <g id="RECT_4_2" stroke="#ffffffff" stroke-width="2">
+      <rect x="195" y="89" width="90" height="22" fill="#f0ad4e" />
+    </g>    <g id="TEXT_4_2">
+      <text x="240.0" y="101.0" text-anchor="middle" font-weight="normal">Accountable</text>
+    </g>  </g>  <g id="TABLE" font-size="14" font-family="Arial, Helvetica, sans-serif" fill="#000000" text-anchor="middle" dominant-baseline="middle">
+    <g id="RECT_4_3" stroke="#ffffffff" stroke-width="2">
+      <rect x="285" y="89" width="90" height="22" fill="#adb5bd" />
+    </g>    <g id="TEXT_4_3">
+      <text x="330.0" y="101.0" text-anchor="middle" font-weight="normal"></text>
+    </g>  </g>  <g id="TABLE" font-size="14" font-family="Arial, Helvetica, sans-serif" fill="#000000" text-anchor="middle" dominant-baseline="middle">
+    <g id="RECT_4_4" stroke="#ffffffff" stroke-width="2">
+      <rect x="375" y="89" width="90" height="22" fill="#02b875" />
+    </g>    <g id="TEXT_4_4">
+      <text x="420.0" y="101.0" text-anchor="middle" font-weight="normal">Informed</text>
+    </g>  </g></svg>

@@ -26,6 +26,7 @@
 # Package imports
 import json
 import os
+import math
 import webbrowser
 from   tkinter import filedialog
 
@@ -151,6 +152,7 @@ class Raci:
         else:
             self.file_write(self.filename)
             self.file_write_excel(self.filename.replace(".html", ".xlsx"))
+            self.file_write_svg(self.filename.replace(".html", ".svg"))
 
     def menu_save_as(self):
         filename = filedialog.asksaveasfilename(title            = "File > Save As",
@@ -160,6 +162,7 @@ class Raci:
         if len(filename):
             self.file_write(filename)
             self.file_write_excel(filename.replace(".html", ".xlsx"))
+            self.file_write_svg(filename.replace(".html", ".svg"))
 
     def menu_view_html(self):
         self.file_view_html()
@@ -392,6 +395,132 @@ class Raci:
                 self.filename_set(filename)
                 # Data is saved
                 self.saved = True
+
+    def file_write_svg(self, filename):
+        if len(filename) > 0:
+            with open(filename, "w") as f:
+                # Get widths from biggest row/column titles
+                width_row = 12
+                width_col = 12
+                for row in range(self.rows):
+                    if len(self.cell_value(row, 0)) > width_row:
+                        width_row = len(self.cell_value(row, 0))
+                for col in range(1,self.cols):
+                    if len(self.cell_value(0, col)) > width_col:
+                        width_col = len(self.cell_value(0, col))
+                font_size = 14
+                width_col = math.ceil(width_col * (font_size*0.5)) + 6
+                width_row = math.ceil(width_row * (font_size*0.5)) + 6
+                h = font_size
+                h += 8
+                y = 1
+                image_w = width_row + (width_col*(self.cols-1)) + 2
+                image_h = (h*(self.rows)) + 2
+                # Output header
+                f.write(f'<svg version="1.1" width="{image_w}" height="{image_h}" xmlns="http://www.w3.org/2000/svg">\n')
+                for row in range(self.rows):
+                    x = 1
+                    for col in range(self.cols):
+                        cell_value = self.cell_value(row, col)
+                        w = width_col
+                        if col == 0:
+                            w = width_row
+                        fill = self.colors.get("light")
+                        if row > 0 and col > 0:
+                            if cell_value in self.roles:
+                                index = self.roles.index(cell_value)
+                                if index < len(self.styles):
+                                    fill = self.colors.get(self.styles[index])
+                        text_y = y+(h/2)+1
+                        text_x = x+(w/2)
+                        text_a = "middle"
+                        text_weight = "normal"
+                        if col == 0:
+                            text_x = x+3
+                            text_a = "start"
+                        if col==0 and row==0:
+                            text_weight = "bold"
+                        f.write(f'  <g id="TABLE" font-size="{font_size}" font-family="Arial, Helvetica, sans-serif" fill="#000000" text-anchor="middle" dominant-baseline="middle">\n')
+                        f.write(f'    <g id="RECT_{row}_{col}" stroke="#ffffffff" stroke-width="2">\n')
+                        f.write(f'      <rect x="{x}" y="{y}" width="{w}" height="{h}" fill="{fill}" />\n')
+                        f.write( '    </g>')
+                        f.write(f'    <g id="TEXT_{row}_{col}">\n')
+                        f.write(f'      <text x="{text_x}" y="{text_y}" text-anchor="{text_a}" font-weight="{text_weight}">{cell_value}</text>\n')
+                        f.write( '    </g>')
+                        f.write( '  </g>')
+                        x += w
+                    y += h
+                if False:
+                    f.write( '<html xmlns="http://www.w3.org/1999/xhtml">\n')
+                    f.write( '  <head>\n')
+                    f.write(f'    <title>{self.cell_value(0,0)}</title>\n')
+                    f.write(f'    <meta name="description" content="{self.cell_value(0,0)}" />\n')
+                    f.write(f'    <meta name="generator"   content="{self.title} {self.version}" />\n')
+                    f.write(f'    <link rel="help"         href="https://github.com/marjohloo/RACI" />\n')
+                    f.write(f'    <link rel="author"       href="https://github.com/marjohloo" />\n')
+                    f.write(f'    <link rel="license"      href="https://www.gnu.org/licenses/gpl-3.0.html" />\n')
+                    f.write( '    <style>\n')
+                    f.write( '        body              { font-size: 10pt; font-family: Calibri,Arial,Helvetica,sans-serif; }\n')
+                    f.write( '        div               { page-break-inside: avoid; }\n')
+                    f.write( '        p                 { font-size: 10pt; }\n')
+                    f.write( '        h1                { font-size: 16pt; font-weight: bold; }\n')
+                    f.write( '        h2                { font-size: 12pt; font-weight: bold; /* page-break-before: always; */ }\n')
+                    f.write( '        table, tr, th, td { font-size: 10pt; text-align: center; vertical-align: top; border: 1px solid black; border-collapse: collapse; padding: 2pt}\n')
+                    f.write( '        .page             { page-break-before: always; }\n')
+                    f.write( '        .left             { text-align: left; }\n')
+                    f.write(f'        .primary          {{ background: {self.colors.get("primary")}; }}\n')
+                    f.write(f'        .secondary        {{ background: {self.colors.get("secondary")}; }}\n')
+                    f.write(f'        .success          {{ background: {self.colors.get("success")}; }}\n')
+                    f.write(f'        .warning          {{ background: {self.colors.get("warning")}; }}\n')
+                    f.write(f'        .primary          {{ background: {self.colors.get("primary")}; }}\n')
+                    f.write(f'        .danger           {{ background: {self.colors.get("danger")}; }}\n')
+                    f.write(f'        .info             {{ background: {self.colors.get("info")}; }}\n')
+                    f.write( '    </style>\n')
+                    f.write( '  </head>\n')
+                    # Calculate column width percentage
+                    col_width = int(100/(self.cols+1))
+                    # Begin body
+                    f.write( '  <body>\n')
+                    f.write( '    <div>\n')
+                    f.write(f'      <h1>{self.cell_value(0,0)}</h1>\n')
+                    # Output table data
+                    f.write('      <table id="RACI" width="100%">\n')
+                    for row in range(self.rows):
+                        f.write('        <tr>\n')
+                        for col in range(self.cols):
+                            if row == 0 and col == 0:
+                                f.write('          <th></th>\n')
+                            else:
+                                f.write(f'          {self.cell_html(row, col, 0)}\n')
+                        f.write('        </tr>\n')
+                    f.write('      </table>\n')
+                    f.write('    </div>\n')
+                    # Output individual data
+                    if False:
+                        for col in range(1, self.cols):
+                            if col == 1:
+                                f.write('    <div class="page">\n')
+                            else:
+                                f.write('    <div>\n')
+                            f.write(f'      <h2>{self.cell_value(0,0)}: {self.cell_value(0, col)}</h2>\n')
+                            f.write( '      <table width="100%">\n')
+                            for row in range(1, self.rows):
+                                f.write( '        <tr>\n')
+                                f.write(f'          {self.cell_html(row, 0,   1)}\n')
+                                f.write(f'          {self.cell_html(row, col, 1)}\n')
+                                f.write( '        </tr>\n')
+                            f.write( '      </table>\n')
+                            f.write('    </div>\n')
+                    # End file
+                    f.write('  </body>\n')
+
+
+                f.write('</svg>\n')
+                f.close()
+                # Retain filename
+                #self.filename_set(filename)
+                # Data is saved
+                #self.saved = True
 
     def file_write_excel(self, filename):
         if len(filename) > 0:
