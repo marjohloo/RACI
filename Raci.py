@@ -410,9 +410,9 @@ class Raci:
                         width_col = len(self.cell_value(0, col))
                 font_size = 14
                 width_col = math.ceil(width_col * (font_size*0.5)) + 6
-                width_row = math.ceil(width_row * (font_size*0.5)) + 6
+                width_row = math.ceil(width_row * (font_size*0.55)) + 6
                 h = font_size
-                h += 8
+                h += 7
                 y = 1
                 image_w = width_row + (width_col*(self.cols-1)) + 2
                 image_h = (h*(self.rows)) + 2
@@ -431,7 +431,7 @@ class Raci:
                                 index = self.roles.index(cell_value)
                                 if index < len(self.styles):
                                     fill = self.colors.get(self.styles[index])
-                        text_y = y+(h/2)+1
+                        text_y = y+h-6
                         text_x = x+(w/2)
                         text_a = "middle"
                         text_weight = "normal"
@@ -440,14 +440,8 @@ class Raci:
                             text_a = "start"
                         if col==0 and row==0:
                             text_weight = "bold"
-                        f.write(f'  <g id="TABLE" font-size="{font_size}" font-family="Arial, Helvetica, sans-serif" fill="#000000" text-anchor="middle" dominant-baseline="middle">\n')
-                        f.write(f'    <g id="RECT_{row}_{col}" stroke="#ffffffff" stroke-width="2">\n')
-                        f.write(f'      <rect x="{x}" y="{y}" width="{w}" height="{h}" fill="{fill}" />\n')
-                        f.write( '    </g>')
-                        f.write(f'    <g id="TEXT_{row}_{col}">\n')
-                        f.write(f'      <text x="{text_x}" y="{text_y}" text-anchor="{text_a}" font-weight="{text_weight}">{cell_value}</text>\n')
-                        f.write( '    </g>')
-                        f.write( '  </g>')
+                        f.write(f'  <rect x="{x}" y="{y}" width="{w}" height="{h}" fill="{fill}" stroke="#ffffff" stroke-width="2" />\n')
+                        f.write(f'  <text x="{text_x}" y="{text_y}" font-size="{font_size}" font-family="Arial, Helvetica, sans-serif" text-anchor="{text_a}" font-weight="{text_weight}" fill="#000000">{cell_value}</text>\n')
                         x += w
                     y += h
                 if False:
