@@ -2,6 +2,18 @@
 
 A tool to create RACI responsibility assignment matricies.
 
+## Work in Progress
+
+This is based on [Kat](github.com/marjohloo/Kat), editing the RACI table works in exactly the same way.
+
+For now the data is saved and loaded from a .html file. 
+When saving a .svg file is created this file can be dragged and dropped into PowerPoint or included in web pages.
+In a future update the .svg file will be used to save and load charts.
+
+## Example SVG
+
+![svg](coffee.svg)
+
 <!---
 
 ## Installation
