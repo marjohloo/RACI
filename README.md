@@ -4,7 +4,7 @@ A tool to create RACI responsibility assignment matricies.
 
 ## Work in Progress
 
-This is based on [Kat](github.com/marjohloo/Kat), editing the RACI table works in exactly the same way.
+This is based on [KAT](https://github.com/marjohloo/Kat), editing the RACI table works in exactly the same way.
 
 For now the data is saved and loaded from a .html file. 
 When saving a .svg file is created. 
